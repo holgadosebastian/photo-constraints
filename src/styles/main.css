@@ -1,4 +1,19 @@
-h1 {
-  color: blue; }
+*,
+*:before,
+*:after {
+  box-sizing: border-box; }
+
+.Challenge {
+  display: flex;
+  padding: 6vw;
+  height: 100vh;
+  background-color: #22C0FF; }
+  .Challenge .Challenge__paragraph {
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    color: #FFF;
+    font-size: 13vw;
+    font-weight: 200; }
+  .Challenge .Challenge__highlight {
+    font-weight: 400; }
 
 /*# sourceMappingURL=main.css.map */

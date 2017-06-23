@@ -1,0 +1,17 @@
+.Challenge {
+	display: flex;
+	padding: 6vw; // Around 20px in 320
+	height: 100vh;
+	background-color: $color-blue-2;
+
+	.Challenge__paragraph {
+		font-family: $font-stack-primary;
+		color: #FFF;
+		font-size: 13vw; // Around 40px in 320
+		font-weight: 200;
+	}
+
+	.Challenge__highlight {
+		font-weight: 400;
+	}
+}

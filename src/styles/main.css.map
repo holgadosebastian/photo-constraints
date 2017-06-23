@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "AAAA,EAAG;EAAE,KAAK,EAAE,IAAI",
-"sources": ["main.scss"],
+"mappings": "AAAA;;OAEQ;EACP,UAAU,EAAE,UAAU;;ACHvB,UAAW;EACV,OAAO,EAAE,IAAI;EACb,OAAO,EAAE,GAAG;EACZ,MAAM,EAAE,KAAK;EACb,gBAAgB,ECHF,OAAO;EDKrB,gCAAsB;IACrB,WAAW,EEPQ,0CAA0C;IFQ7D,KAAK,EAAE,IAAI;IACX,SAAS,EAAE,IAAI;IACf,WAAW,EAAE,GAAG;EAGjB,gCAAsB;IACrB,WAAW,EAAE,GAAG",
+"sources": ["common/_layout.scss","challenge/_challenge.scss","config/_colors.scss","config/_fonts.scss"],
 "names": [],
 "file": "main.css"
 }

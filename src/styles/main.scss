@@ -1,1 +1,9 @@
-h1 { color: blue;}
+// Variables
+@import 'config/colors';
+@import 'config/fonts';
+
+// Common styles
+@import 'common/layout';
+
+// Components
+@import 'challenge/challenge';
