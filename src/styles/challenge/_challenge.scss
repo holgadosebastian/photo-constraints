@@ -6,7 +6,7 @@
 	background-color: $color-blue-2;
 
 	.Challenge__paragraph {
-		font-family: $font-stack-primary;
+		flex-grow: 10;
 		color: #FFF;
 		font-size: 13vw; // Around 40px in 320
 		font-weight: 200;
@@ -14,5 +14,11 @@
 
 	.Challenge__highlight {
 		font-weight: 400;
+	}
+
+	.Challenge__paging {
+		font-size: 6vw;
+		font-weight: 700;
+		color: #FFF;
 	}
 }

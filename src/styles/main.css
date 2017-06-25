@@ -3,6 +3,10 @@
 *:after {
   box-sizing: border-box; }
 
+html,
+body {
+  font-family: "Montserrat", Helvetica, Arial, sans-serif; }
+
 .Challenge {
   display: flex;
   flex-direction: column;
@@ -10,11 +14,15 @@
   min-height: 100vh;
   background-color: #22C0FF; }
   .Challenge .Challenge__paragraph {
-    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    flex-grow: 10;
     color: #FFF;
     font-size: 13vw;
     font-weight: 200; }
   .Challenge .Challenge__highlight {
     font-weight: 400; }
+  .Challenge .Challenge__paging {
+    font-size: 6vw;
+    font-weight: 700;
+    color: #FFF; }
 
 /*# sourceMappingURL=main.css.map */

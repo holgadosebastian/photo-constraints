@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Swipeable from 'react-swipeable';
 import Dictionary from './Dictionary';
 
 class Challenge extends Component {
@@ -15,13 +16,25 @@ class Challenge extends Component {
   }
 
   getNextChallenge = () => {
-    let challenges = this.state.challenges;
-    challenges.push( this.createNewChallenge() );
+    if ( this.state.currentChallenge === this.state.challenges.length - 1 ) {
+      let challenges = this.state.challenges;
+      challenges.push( this.createNewChallenge() );
 
-    this.setState( {
-      challenges: challenges,
-      currentChallenge: this.state.currentChallenge + 1
-    } );
+      this.setState( {
+        challenges: challenges,
+        currentChallenge: this.state.currentChallenge + 1
+      } );
+    } else {
+      this.setState( {
+        currentChallenge: this.state.currentChallenge + 1
+      } );
+    }
+  }
+
+  setPreviousChallenge = () => {
+    if ( this.state.currentChallenge > 0 ) {
+      this.setState( {currentChallenge: this.state.currentChallenge - 1} );
+    }
   }
 
   createNewChallenge = () => {
@@ -29,11 +42,12 @@ class Challenge extends Component {
         adjective = this.getRandomWord(Dictionary.adjectives),
         lens = this.getRandomWord(Dictionary.lenses),
         photo = this.getRandomWord(Dictionary.photo),
-        target = this.getRandomWord(Dictionary.target)
+        target = this.getRandomWord(Dictionary.targets),
+        action = Math.random() < 0.5 ? this.getRandomWord(Dictionary.actions) : ''
 
     return {
       id: id,
-      value: `A ${adjective} ${lens} ${photo} of ${target}`
+      value: `A ${adjective} ${lens} ${photo} of ${target} ${action}`
     };
   }
 
@@ -44,12 +58,16 @@ class Challenge extends Component {
 
   render() {
     return (
-			<div className="Challenge"
-        onClick={ this.getNextChallenge }>
-        <p className="Challenge__paragraph">
-          <span className="Challenge__text">{ this.state.challenges[this.state.currentChallenge].value }</span>
-        </p>
-			</div>
+  			<Swipeable className="Challenge"
+          onSwipedRight={ this.setPreviousChallenge }
+          onSwipedLeft={ this.getNextChallenge }>
+            <p className="Challenge__paragraph">
+              <span className="Challenge__text">{ this.state.challenges[this.state.currentChallenge].value }</span>
+            </p>
+            <p className="Challenge__paging">
+              {this.state.currentChallenge + 1} / {this.state.challenges.length}
+            </p>
+  			</Swipeable>
     );
   }
 }
