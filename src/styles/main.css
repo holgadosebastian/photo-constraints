@@ -5,8 +5,9 @@
 
 .Challenge {
   display: flex;
+  flex-direction: column;
   padding: 6vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #22C0FF; }
   .Challenge .Challenge__paragraph {
     font-family: "Montserrat", Helvetica, Arial, sans-serif;
