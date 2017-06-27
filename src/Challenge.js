@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 import Swipeable from 'react-swipeable';
 import Dictionary from './Dictionary';
+var _ = require('lodash');
+
+// TODO use scss colors
+const colors = [
+  '45CCFF',
+  '49E83E',
+  'FFD432',
+  'E84B30',
+  'B243FF'
+];
 
 class Challenge extends Component {
   constructor() {
@@ -39,35 +49,35 @@ class Challenge extends Component {
 
   createNewChallenge = () => {
     let id = this.state.challenges ? this.state.challenges.length : 0,
-        adjective = this.getRandomWord(Dictionary.adjectives),
-        lens = this.getRandomWord(Dictionary.lenses),
-        photo = this.getRandomWord(Dictionary.photo),
-        target = this.getRandomWord(Dictionary.targets),
-        action = Math.random() < 0.5 ? this.getRandomWord(Dictionary.actions) : ''
+        adjective = _.sample(Dictionary.adjectives),
+        lens = Math.random() < 0.2 ? _.sample(Dictionary.lenses) : '',
+        photo = _.sample(Dictionary.photo),
+        target = _.sample(Dictionary.targets),
+        action = Math.random() < 0.35 ? _.sample(Dictionary.actions) : '',
+        color = '#' + _.sample(colors);
 
     return {
       id: id,
-      value: `A ${adjective} ${lens} ${photo} of ${target} ${action}`
-    };
-  }
-
-  getRandomWord = list => {
-    let index = Math.floor(Math.random() * list.length);
-    return list[index];
+      value: `A ${adjective} ${lens} ${photo} of ${target} ${action}`,
+      color: color
+    }
   }
 
   render() {
     return (
-  			<Swipeable className="Challenge"
-          onSwipedRight={ this.setPreviousChallenge }
-          onSwipedLeft={ this.getNextChallenge }>
-            <p className="Challenge__paragraph">
-              <span className="Challenge__text">{ this.state.challenges[this.state.currentChallenge].value }</span>
-            </p>
-            <p className="Challenge__paging">
-              {this.state.currentChallenge + 1} / {this.state.challenges.length}
-            </p>
-  			</Swipeable>
+			<Swipeable className="Challenge"
+        style={{backgroundColor : this.state.challenges[this.state.currentChallenge].color}}
+        onSwipedRight={ this.setPreviousChallenge }
+        onSwipedLeft={ this.getNextChallenge }>
+        { this.state.challenges.map( challenge => (
+          <p key={challenge.id} className={'Challenge__txt ' + ( challenge.id < this.state.currentChallenge ? 'Challenge__txt--left' : challenge.id > this.state.currentChallenge ? 'Challenge__txt--right' : '')}>
+            <span className="Challenge__text">{ challenge.value }</span>
+          </p>
+        ))}
+        <p className="Challenge__paging">
+          {this.state.currentChallenge + 1} / {this.state.challenges.length}
+        </p>
+			</Swipeable>
     );
   }
 }

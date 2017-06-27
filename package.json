@@ -8,6 +8,7 @@
     "react-swipeable": "^4.0.1"
   },
   "devDependencies": {
+    "lodash": "^4.17.4",
     "react-scripts": "1.0.7"
   },
   "scripts": {

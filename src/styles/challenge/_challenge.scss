@@ -3,13 +3,32 @@
 	flex-direction: column;
 	padding: 6vw; // Around 20px in 320
 	min-height: 100vh;
-	background-color: $color-blue-2;
+	transition: background-color 0.3s ease;
 
-	.Challenge__paragraph {
-		flex-grow: 10;
+	.Challenge__txt {
+		position: fixed;
+		top: 6vw;
+		left: 0;
+		right: 0;
+		padding: 0 6vw;
 		color: #FFF;
 		font-size: 13vw; // Around 40px in 320
 		font-weight: 200;
+		opacity: 1;
+		transition: transform 0.3s ease, opacity 0.5s ease;
+	}
+
+	.Challenge__txt--left {
+		transform: translateX(-50vw);
+	}
+
+	.Challenge__txt--right {
+		transform: translateX(50vw);
+	}
+
+	.Challenge__txt--left,
+	.Challenge__txt--right {
+		opacity: 0;
 	}
 
 	.Challenge__highlight {
@@ -17,6 +36,8 @@
 	}
 
 	.Challenge__paging {
+		position: fixed;
+		bottom: 6vw;
 		font-size: 6vw;
 		font-weight: 700;
 		color: #FFF;
